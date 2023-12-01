@@ -13,7 +13,7 @@ public class third_task {
 
         System.out.println("Task 2\n\n");
 
-        System.out.println("Input (1 - write | 2 - read | 3 - add to new text):\n");
+        System.out.println("Input (1 - write | 2 - read | 3 - add to new text):\n\n");
 
         Scanner input = new Scanner(System.in);
 
@@ -40,15 +40,17 @@ public class third_task {
 
         int value;
 
-        ArrayList<String> data = collecting_reading();
-
-
         // create an object of Scanner
         Scanner input = new Scanner(System.in);
 
+        System.out.println("\n\nInput the name of the file you want to work with ( like numbers.txt ):\n\n");
+        String name_of_the_file = input.next();
+
+        ArrayList<String> data = collecting_reading(name_of_the_file);
+
 
         try {
-            FileWriter myWriter = new FileWriter("numbers.txt"); // creating new file
+            FileWriter myWriter = new FileWriter(name_of_the_file); // creating new file
 
 
             for (String a : data) {
@@ -94,13 +96,13 @@ public class third_task {
 
 
     // collecting info from the previous version of the file
-    public static ArrayList<String> collecting_reading() {
+    public static ArrayList<String> collecting_reading(String name_of_the_file) {
 
         ArrayList<String> arrOfStr = new ArrayList<>();
 
         try {
 
-            File file = new File("numbers.txt");
+            File file = new File(name_of_the_file);
             Scanner myReader = new Scanner(file);
 
             while (myReader.hasNextLine()) {
@@ -130,7 +132,6 @@ public class third_task {
 
 
 
-
     public static void writing_function(){
 
         int value;
@@ -141,9 +142,12 @@ public class third_task {
         // create an object of Scanner
         Scanner input = new Scanner(System.in);
 
+        System.out.println("\n\nInput the name of the file you want to write to ( like numbers.txt ):\n\n");
+        String name_of_the_file = input.next();
+
 
         try {
-            FileWriter myWriter = new FileWriter("numbers.txt"); // creating new file
+            FileWriter myWriter = new FileWriter(name_of_the_file); // creating new file
 
             System.out.println("\nWrite the number of integers you would like to write:\n");
 
@@ -176,14 +180,20 @@ public class third_task {
 
     }
 
+    
     public static void reading_function() {
 
         int count;
 
         count = 1;
 
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("\n\nInput the name of the file you want to read ( like numbers.txt ):\n\n");
+        String name_of_the_file = input.next();
+
         try {
-            File file = new File("numbers.txt");
+            File file = new File(name_of_the_file);
             Scanner myReader = new Scanner(file);
 
             while (myReader.hasNextLine()) {
